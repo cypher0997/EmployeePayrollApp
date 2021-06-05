@@ -81,7 +81,7 @@ label{
 }
 .input{
     width: 100%;
-    border: 1 #ccc solid;
+    border: 0.5 solid #ccc;
     padding: 12px;
     border-radius: 4px;
 }
@@ -95,6 +95,12 @@ label{
     margin-left: 12px;
 }
 .profile-radio-content>label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.inside-row{
+    width: 1px;
     display: flex;
     flex-direction: row;
     align-items: center;
