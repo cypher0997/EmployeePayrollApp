@@ -84,6 +84,9 @@ label{
     padding: 12px;
     border-radius: 4px;
 }
+.text-error{
+    color: red;
+}
 .profile-radio-content{
     display: flex;
     flex-direction: row;
