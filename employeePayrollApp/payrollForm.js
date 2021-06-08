@@ -41,11 +41,11 @@ const createEmployeePayroll = () => {
     }
     employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop(); 
     employeePayrollData.gender = getSelectedValues('[name=gender]').pop(); 
-    employeePayrollData.department = getSelectedValues('[name=department]');
+    employeePayrollData.department = getSelectedValues('[name=dep]');
     employeePayrollData.salary = getInputValueById('#salary'); 
     employeePayrollData.note = getInputValueById('#notes'); 
     let date = getInputValueById('#day')+" "+getInputValueById('#month')+" "+getInputValueById('#year'); 
-    employeePayrollData.startDate = new Date(date); 
+    employeePayrollData.startDate = new Date(date) 
     alert (employeePayrollData.toString()); 
     return employeePayrollData;
 }
@@ -64,11 +64,13 @@ const getInputValueById = (id) =>{
 }
 function createAndUpdateStorage (employeePayrollData) {
     console.log("it is : "+employeePayrollData)
-    let employeePayrollList = [JSON.parse( localStorage.getItem("EmployeePayrollList"))];
+    let employeePayrollList = JSON.parse( localStorage.getItem("EmployeePayrollList"));
     if (employeePayrollList != undefined) {
         employeePayrollList.push(employeePayrollData); 
+        console.log(" i am here");
     } else{
-        employeePayrollList = employeePayrollData
+        employeePayrollList = [employeePayrollData];
+        console.log("now i am here");
     }
     alert(employeePayrollList.toString()); 
     localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
