@@ -20,7 +20,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         output. textContent = salary.value; 
     });
 });
-    
+
+ 
 const save  = () => {  
     console.log("here")
     try {
@@ -31,9 +32,15 @@ const save  = () => {
             return;
     }
 }
+
 const createEmployeePayroll = () => {
+   
+    // let len = localStorage.length
+    // let setId = len++;
+    // console.log(setId)
     let employeePayrollData = new EmployeePayrollData(); 
     try {
+        // employeePayrollData.id = setId;
         employeePayrollData.name = getInputValueById('#name'); 
     } catch (e) { 
         setTextValue('.text-error', e); 

@@ -22,12 +22,12 @@ const createInnerHtml = () => {
             <td>${empPayrollData._gender}</td> 
             <td>${getDeptHtml(empPayrollData._department)}</td> 
             <td>${empPayrollData._salary}</td> 
-            <td>${(empPayrollData._startDate)}</td> 
+            <td>${convertToString(empPayrollData._startDate)}</td> 
         <td>
             <img id="${empPayrollData._id}" onclick="remove(this)"
-                src="../assets/icons/delete-black-18dp.svg" alt="delete"> 
-            <img id="sempPayrollData._id}" onclick="update(this)"
-                src"../assets/icons/create-black-18dp.svg" alt="edit"> 
+                src=" " alt="delete"> 
+            <img id="${empPayrollData._id}" onclick="update(this)"
+                src" " alt="edit"> 
         </td>
         </tr>
         `;  
@@ -40,4 +40,19 @@ const getDeptHtml = (deptList) => {
         deptHtml = `${deptHtml} <div class='dept-label'>${dept}</div>`
     }
     return deptHtml;
+}
+function convertToString(date){
+    const opt = { day:'numeric',month:'short',year:'numeric'};
+    const newDate = !date ? "undefined" : new Date(Date.parse(date)).toLocaleDateString('en-GB',opt);
+    return newDate
+}
+const remove = (node) => {
+    let empPayrollData = empPayrollList.find(empData => empData._id == node.id); 
+    if (!empPayrollData) 
+        return; 
+    const index = empPayrollList.map(empData => empData._id).indexOf(empPayrollData._id); 
+    empPayrollList.splice(index, 1); 
+    localStorage.setItem("EmployeePayrolllist", JSON.stringify (empPayrollList)); 
+    document.querySelector(".emp-count").textContent = empPayrollList.length; createInnerHtml();
+    
 }
