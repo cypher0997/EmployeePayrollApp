@@ -52,7 +52,14 @@ const remove = (node) => {
         return; 
     const index = empPayrollList.map(empData => empData._id).indexOf(empPayrollData._id); 
     empPayrollList.splice(index, 1); 
-    localStorage.setItem("EmployeePayrolllist", JSON.stringify (empPayrollList)); 
+    localStorage.setItem("EmployeePayrollList", JSON.stringify (empPayrollList)); 
     document.querySelector(".emp-count").textContent = empPayrollList.length; createInnerHtml();
     
+}
+const update = (node) =>{
+    let empPayrollData = empPayrollList.find(empData => empData._id == node.id); 
+    if (!empPayrollData) 
+        return; 
+    localStorage.setItem('editEmp',JSON.stringify(empPayrollData))
+    window.location.replace(site_properties.add_emp_payroll_page);
 }
